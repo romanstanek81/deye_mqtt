@@ -1,0 +1,28 @@
+---
+configuration:
+  broker:
+    name: MQTT broker IP address
+  port:
+    name: MQTT broker port
+  user:
+    name: MQTT user
+    description: If not used, leave it blank
+  pwd:
+    name: MQTT user password
+    description: If no user is used, leave it blank
+  deye_id:
+    name: Deye inverter ID
+    description: This ID will be used as MQTT topic prefix. Generally, it allows the use of more Deye inverters at the same time.
+  deye_ip:
+    name: Deye inverter wifi datalogger IP
+  deye_ser_nr:
+    name: Serial number of the wifi datalogger
+  read_all_registers_period:
+    name: Read period for all registers
+    description: With this period, at least, all registers are read from the Deye inverter and published via MQTT. You can specify individual periods in the section register periods.
+  reg_map:
+    name: Register periods
+    description: >-
+      Set individual reading (and automatically publishing) periods for particular registers. 
+      The registers are read from the Deye inverter and published via MQTT. This configuration shall consist 
+      of a list of "registers" and "delay". The "registers" can contain a list of register names separated by a comma.

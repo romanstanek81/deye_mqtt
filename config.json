@@ -1,0 +1,48 @@
+{
+  "name": "deye mqtt",
+  "version": "1.20.3",
+  "slug": "deye_mqtt",
+  "description": "DEYE inverter over MQTT add-on",
+  "arch": ["armv7", "armhf", "aarch64", "amd64", "i386"],
+  "startup": "services",
+  "boot": "auto",
+  "hassio_api": true,
+  "hassio_role": "default",
+  "homeassistant_api": false,
+  "auth_api": false,
+  "ingress": false,
+  "map": ["config:rw"],
+  "options": {
+    "broker": "192.168.1.1",
+    "port": 1883,
+    "user": "user_1",
+    "pwd": "secret",
+    "deye_id": "deye_inverter",
+    "deye_ip": "192.168.1.1",
+    "deye_ser_nr": 2787456568,
+    "read_all_registers_period": 1800,
+    "reg_map": [{
+        "registers": "battery_out_power, load_total_power, pv1_in_power, pv2_in_power",
+        "delay": 30
+      },
+      { 
+        "registers":  "bms_battery_soc, today_from_pv, today_from_pv_s1, today_from_pv_s2, today_to_load, heatsink_temp",
+        "delay": 300
+    }]
+  },
+  "schema": {
+    "broker": "str",
+    "port": "int",
+    "user": "str",
+    "pwd": "str",
+    "deye_id": "str",
+    "deye_ip": "str",
+    "deye_ser_nr": "int",
+    "read_all_registers_period": "int",
+    "reg_map": [{
+      "registers": "str",
+      "delay": "int"
+    }]
+  }
+}
+

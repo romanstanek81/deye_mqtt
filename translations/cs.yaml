@@ -1,0 +1,28 @@
+---
+configuration:
+  broker:
+    name: IP adresa MQTT brokeru
+  port:
+    name: Port MQTT brokeru
+  user:
+    name: MQTT uživatel
+    description: Pokud se nepoužívá, nechte prázdné
+  pwd:
+    name: Heslo MQTT uživatele
+    description: Pokud se nepoužívá uživatel, nechte prázdné
+  deye_id:
+    name: ID Deye invertoru
+    description: Toto ID bude použito jako předpona tématu MQTT. Obecně umožňuje použití více Deye invertorů současně.
+  deye_ip:
+    name: IP adresa wifi dataloggeru Deye invertoru
+  deye_ser_nr:
+    name: Sériové číslo wifi dataloggeru
+  read_all_registers_period:
+    name: Perioda čtení všech registrů
+    description: S touto periodou budou všechny registry čteny z Deye invertoru a publikovány přes MQTT. Můžete i specifikovat jednotlivé periody vycitani registrů - viz nasledující nastavení.
+  reg_map:
+    name: Doby periodickeho vyčítaní jednotlivých registrů
+    description: >-
+      Nastavte jednotlivé periody čtení (a automatického publikování) pro konkrétní registry.
+      Registry jsou čteny z Deye invertoru a publikovány přes MQTT. Tato konfigurace by měla sestávat
+      ze seznamu "registrů" a "zpoždění". "Registry" mohou obsahovat seznam názvů registrů oddělených čárkou.
