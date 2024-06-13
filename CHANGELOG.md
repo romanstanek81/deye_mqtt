@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.20.5
+  - All supported registers are added to documentation.
+
 ## 1.20.4
   - README, DOCS fixes, instalation steps fixed
 
