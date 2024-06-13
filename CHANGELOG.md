@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.20.4
+  - README, DOCS fixes, instalation steps fixed
+
 ## 1.20.3
   - some cleanup
 

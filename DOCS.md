@@ -54,29 +54,12 @@ To configure the Deye MQTT addon, you need to set various options in the `config
     ```
 
 ## Installation
-
-1. **Download the Addon**:
-   - Clone the repository or download the addon files and place them in the appropriate directory within your Home Assistant configuration.
-
-2. **Add the Repository to Home Assistant**:
-   - Go to the Supervisor panel in Home Assistant.
-   - Click on the "Add-on Store" tab.
-   - Click on the three dots menu in the upper right corner and select "Repositories".
-   - Add the URL of the repository.
-
-3. **Install the Addon**:
-   - Find the Deye MQTT addon in the list of available addons.
-   - Click on it and then click on the "Install" button.
-
-4. **Configure the Addon**:
-   - Once installed, go to the addon configuration page.
-   - Fill in the configuration options as described above.
-
-5. **Start the Addon**:
-   - After configuring, click on the "Start" button to launch the addon.
-
-6. **Check the Logs**:
-   - Monitor the logs to ensure the addon is connecting to the MQTT broker and reading data from the Deye inverter correctly.
+  1. Navigate in your Home Assistant frontend to Settings -> Add-ons -> Add-on store.
+  2. Click on the "Add-on Store" tab.
+  3. Click on the three dots menu in the upper right corner and select "Repositories".
+  4. Add the URL of the repository (https://github.com/romanstanek81/deye_mqtt).
+  5. Find the "deye mqtt" add-on and click it.
+  6. Click on the "INSTALL" button.
 
 ## Usage
 
@@ -144,7 +127,7 @@ In the table below is a list of all writeable registers including those which is
 | grid_low_voltage | Float |
 | grid_max_output_pwr | Int |
 | grid_peak_shaving_pwr | Int |
-| inverter_time | DeviceTimeWriteable |
+| inverter_time | DeviceTime |
 | max_charge_amps | Int |
 | max_discharge_amps | Int |
 | sell_point_t1 | Time |
@@ -178,8 +161,8 @@ In the table below is a list of all writeable registers including those which is
 
 ## Support
 
-For any issues or questions, please refer to the [GitHub repository](https://github.com/your-repository) or contact the maintainer.
+For any issues or questions, please refer to the [GitHub repository](https://github.com/romanstanek81/deye_mqtt) or contact the maintainer.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/your-repository/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/romanstanek81/deye_mqtt/blob/main/LICENSE) file for details.
