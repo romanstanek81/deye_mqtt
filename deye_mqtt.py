@@ -110,7 +110,7 @@ def publish_data(data):
                 else:
                     val = "1"
             
-        client.publish(deye_id + "/" + i.lower() + "/state", "{ \"value\": \"" + val+"\"}")    
+        client.publish(deye_id + "/" + i.lower() + "/state", "{ \"value\": \"" + val+"\"}", retain=True)    
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))

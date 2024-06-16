@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.20.9
+  - publishing messages with retain flag (to ifx issues after HA restart)
+
 ## 1.20.6
   - Some cleanup and no publish of empty discovery mqqt msg at startup
   
