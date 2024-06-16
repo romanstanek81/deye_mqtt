@@ -62,8 +62,6 @@ def get_discovery_msgs(regs):
         out[item] = json.dumps(discovery_msg)
     return out
 
-def on_connect(client, userdata, flags, rc):
-    print("Connected with result code " + str(rc))
 
 def on_message(client, userdata, message):
     print(f"Received message: {message.payload.decode()} on topic {message.topic}")
@@ -114,6 +112,18 @@ def publish_data(data):
             
         client.publish(deye_id + "/" + i.lower() + "/state", "{ \"value\": \"" + val+"\"}")    
 
+def on_connect(client, userdata, flags, rc):
+    print("Connected with result code " + str(rc))
+    dis_msgs = get_discovery_msgs(read_regs_supported)
+
+    client.publish(deye_id + "/status","online",  qos=1, retain=True)
+    for m in dis_msgs:
+        # remove it before run ?
+        #client.publish("homeassistant/sensor/" + m + "/config", "")
+        client.publish("homeassistant/sensor/" + m + "/config", dis_msgs[m])
+
+    client.subscribe(deye_id + "/+/set")
+
 client = mqtt.Client(deye_id)
 
 client.on_connect = on_connect
@@ -124,18 +134,6 @@ if user != "":
 client.will_set(deye_id + "/status","offline", qos=1, retain=False)
 client.connect(broker)
 client.loop_start()
-
-time.sleep(1)
-
-dis_msgs = get_discovery_msgs(read_regs_supported)
-
-client.publish(deye_id + "/status","online",  qos=1, retain=True)
-for m in dis_msgs:
-    # remove it before run ?
-    #client.publish("homeassistant/sensor/" + m + "/config", "")
-    client.publish("homeassistant/sensor/" + m + "/config", dis_msgs[m])
-
-client.subscribe(deye_id + "/+/set")
 
 
 for i in read_regs_desc:
