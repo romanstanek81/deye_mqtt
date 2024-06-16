@@ -120,7 +120,7 @@ def on_connect(client, userdata, flags, rc):
     for m in dis_msgs:
         # remove it before run ?
         #client.publish("homeassistant/sensor/" + m + "/config", "")
-        client.publish("homeassistant/sensor/" + m + "/config", dis_msgs[m])
+        client.publish("homeassistant/sensor/" + m + "/config", dis_msgs[m], retain=True)
 
     client.subscribe(deye_id + "/+/set")
 

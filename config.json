@@ -1,6 +1,6 @@
 {
   "name": "Deye MQTT",
-  "version": "1.20.7",
+  "version": "1.20.8",
   "slug": "deye_mqtt",
   "description": "Deye inverter over MQTT add-on",
   "arch": ["armv7", "armhf", "aarch64", "amd64", "i386"],
