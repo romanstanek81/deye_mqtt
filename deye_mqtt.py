@@ -132,7 +132,7 @@ dis_msgs = get_discovery_msgs(read_regs_supported)
 client.publish(deye_id + "/status","online",  qos=1, retain=True)
 for m in dis_msgs:
     # remove it before run ?
-    client.publish("homeassistant/sensor/" + m + "/config", "")
+    #client.publish("homeassistant/sensor/" + m + "/config", "")
     client.publish("homeassistant/sensor/" + m + "/config", dis_msgs[m])
 
 client.subscribe(deye_id + "/+/set")

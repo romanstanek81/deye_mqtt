@@ -41,7 +41,6 @@ class DeyeInverter:
         return values
 
     def start(self):
-        #self.loop(0)
         self._timer_thread = threading.Thread(target=self.loop)
         self._timer_thread.daemon = True
         self._timer_thread.start()
@@ -131,25 +130,3 @@ class DeyeInverter:
 
         self._op_lock.release()
         return None
-
-
-if __name__ == '__main__':
-    inv = DeyeInverter('192.168.1.1',2783457780)
-    inv.start()
-    while (True):
-        print(inv._regs_values)
-        time.sleep(5)
-        
-
-#from deye_controller.modbus.protocol import *
-#isinstance(regs[2], IntType)
-
-    """
-    MaxAmpCharge
-    MaxAmpDischarge
-    SolarSell
-    GridExportLimit
-    BMSBatteryVoltage
-    BMSBatteryAlarm
-
-    """

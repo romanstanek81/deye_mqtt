@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.20.6
+  - Some cleanup and no publish of empty discovery mqqt msg at startup
+  
 ## 1.20.5
   - All supported registers are added to documentation.
 
