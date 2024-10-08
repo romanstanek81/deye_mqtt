@@ -71,31 +71,53 @@ def on_message(client, userdata, message):
         reg_name = t_parts[1]
         if reg_name in read_write_reg_map:
             wr = read_write_reg_map[reg_name]
-            if isinstance(wr, BoolWritable):
-                if msg == '1' or msg.lower() == "true" or msg.lower() == "active":
-                    val = True
-                elif msg == '0' or msg.lower() == "false" or msg.lower() == "inactive":
-                    val = False
+        else:
+            # custom: like '172_int' register 172, type IntWritable
+            parts=reg_name.split("_")
+            if len(parts) != 2:
+                print("Bad reg_name:"+reg_name)
+                return
+            else:
+                try:
+                    reg_nr = int(parts[0])
+                except Exception as e:
+                    print("register number is not a number")
+                    return
+
+                if parts[1] == 'int':
+                    wr=IntWritable(reg_nr)
+                elif parts[1] == 'float':
+                    wr=FloatWritable(reg_nr)
+                elif parts[1] == 'bool':
+                    wr=BoolWritable(reg_nr)
                 else:
-                    # TODO LOG
-                    print("bad bool value {}. e: {}".format(msg, e))
                     return
-            elif isinstance(wr, FloatWritable):
-                try:
-                    val = float(msg)
-                except Exception as e:
-                    # TODO LOG
-                    print("bad float value {}. e: {}".format(msg, e))
-                    return
-            elif isinstance(wr, IntWritable):
-                try:
-                    val = int(msg)
-                except Exception as e:
-                    # TODO LOG
-                    print("bad int value {}. e: {}".format(msg, e))
-                    return
-            wr.set(val)
-            inv.write(wr)
+
+        if isinstance(wr, BoolWritable):
+            if msg == '1' or msg.lower() == "true" or msg.lower() == "active":
+                val = True
+            elif msg == '0' or msg.lower() == "false" or msg.lower() == "inactive":
+                val = False
+            else:
+                # TODO LOG
+                print("bad bool value {}. e: {}".format(msg, e))
+                return
+        elif isinstance(wr, FloatWritable):
+            try:
+                val = float(msg)
+            except Exception as e:
+                # TODO LOG
+                print("bad float value {}. e: {}".format(msg, e))
+                return
+        elif isinstance(wr, IntWritable):
+            try:
+                val = int(msg)
+            except Exception as e:
+                # TODO LOG
+                print("bad int value {}. e: {}".format(msg, e))
+                return
+        wr.set(val)
+        inv.write(wr)
 
 
 def publish_data(data):

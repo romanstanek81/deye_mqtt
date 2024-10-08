@@ -243,7 +243,15 @@ The addon also allows to write to particular registers. To do so, publish the va
 For example, to write value 50 to `zero_export_power` register, publish message with topic "deye_inverter/zero_export_power/set" and message set to "50". To do it from linux console you can do it via the following:
 
 ```bash
-mosquitto_pub -h 192.168.1.110 -t "deye_inverter/zero_export_power/set" -m "50"
+mosquitto_pub -h 192.168.1.1 -t "deye_inverter/zero_export_power/set" -m "50"
+```
+#### Write a value to a defined register
+If a register is not listed below, it can be specified by number and type in topic. Supported types are int, float, bool.
+
+The following example writes value 0 to int register at address 172:
+
+```bash
+mosquitto_pub -h 192.168.1.1 -t "deye_inverter/172_int/set" -m "0"
 ```
 
 #### Writable registers

@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.20.12
+  - Added suport for setting any register. Topic like  deye_inverter/172_int/set . supported int, float, bool
+
 ## 1.20.9
   - publishing messages with retain flag (to ifx issues after HA restart)
 
